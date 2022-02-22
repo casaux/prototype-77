@@ -1,0 +1,37 @@
+<html>
+<head>
+  <style>
+  iframe{
+    margin:auto;
+    border-radius: 25px;
+    background: #000;
+    border:25px solid #000;
+    display:block;
+  }
+  </style>
+
+</head>
+  <body>
+
+    <iframe src="mycasa-2.html" onLoad="loadHash(this.contentWindow.location.href)" id="phone" width="380" height="750"></iframe>
+
+    <script>
+    var hashURL = window.location.hash;
+    hashURL = hashURL.substring(1,hashURL.length);
+
+
+    if(hashURL.length>0){
+      document.getElementById('phone').src=hashURL;
+    }
+
+    function loadHash(thisURL){
+      var index = thisURL.lastIndexOf("/") + 1;
+      var filename = thisURL.substr(index);
+      window.location.hash = "#"+filename;
+    }
+
+
+    </script>
+  </body>
+</head>
+</html>
