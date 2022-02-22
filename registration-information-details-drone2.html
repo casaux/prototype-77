@@ -75,6 +75,7 @@
          
          }
          }
+             
          
          /* DJI help text */
          $("#dji-help").html("<strong>Your DJI "+DJIModel+" serial number is 14 characters and will start with:<br> <span style='font-size:1.5rem; font-family:monaco'>"+DJIPrefix+"</span></strong>");
@@ -188,13 +189,13 @@
          });
          
          
-         $("#no-serial").change(function() {
+         $("#no-serial-1").change(function() {
          
          if ( $(this).is(':checked') ) {
-         $("#text-input-block3").prop('disabled', true);
+        
          $("#no-serial-callout").css("display","block");
          } else {
-         $("#text-input-block3").prop('disabled', false);
+        
          $("#no-serial-callout").css("display","none");
          }
          
@@ -204,18 +205,22 @@
           
          if($(this).val()==2){
           $("#home-build").css("display","none");
+             $("#no-serial").css("display","none");
           $(".default-values").css("display","block");
          }
          else if($(this).val()==3){
           $("#home-build").css("display","none");
+             $("#no-serial").css("display","none");
           $(".default-values").css("display","block");
          }
          	   else if($(this).val()==4){
           $("#home-build").css("display","none");
+                   $("#no-serial").css("display","none");
           $(".default-values").css("display","block");
          }
          else {
           $("#home-build").css("display","block");
+             $("#no-serial").css("display","block");
           $(".default-values").css("display","none");
          }
          
@@ -291,7 +296,8 @@
          else {
          $("#text-input-block2").css("display","block");
          $("#home-build").css("display","block");
-         $("#other-manufacturer").css("display","block");
+         $("#other-manufacturer").css("display","none");
+        $("#other-model-free").css("display","block");	     
          }
          
          
@@ -311,7 +317,7 @@
          
          $("#home-build").css("display","none");
          $("#other-model-free").css("display","none");
-                     $("#weight-info").css("display","block");
+                     $("#weight-info").css("display","none");
                      
          
          if($(this).find("option:selected").text()=="Other"){
@@ -531,9 +537,9 @@
                      <div id="home-build" style="display:none;">
                         <div class="au-form-group">
                            <div class="form-section">
-                              <label for="category" class="au-label">Drone category</label>
+                              <label for="category" class="au-label">Category</label>
                               <span class="au-hint-text">
-                                 Please select your drone category/type.  <a href="casa-drone-types.html" target="_blank">What are these?</a>
+                                 Please select your category/type.  <a href="casa-drone-types.html" target="_blank">What are these?</a>
                               </span>
                               <select id="category" class="au-select au-select--block">
                                  <option value="1">Please select</option>
@@ -598,23 +604,26 @@
                       
                      <div class="au-form-group">
                         <label for="text-input-block3" class="au-label">Serial number</label>
-                        <span class="au-hint-text">
-                        Please enter your drone serial number. <a href="casa-drone-serial-numbers.html" target="_blank">How do I find this?</a> 
-                        </span>
-                        <div id="dji-help" class="au-callout" style="margin-bottom: 1rem; display: none">
+                         <div id="dji-help" class="au-callout" style="margin-bottom: 1rem; display: none">
                         </div>
-                     </div>
+                        <span class="au-hint-text">
+                        Please enter your drone serial number. <strong><a href="casa-drone-serial-numbers.html" target="_blank">How do I find this?</a></strong> 
+                        </span>
+                        
                      <input class="au-text-input au-text-input--block" name="text-input-block3" id="text-input-block3" type="text" value="">
+                         </div>
                      <div>
                         <span class="" style="display:none;"><strong>Serial number incorrect for this drone type</strong></span>
                         </section>	
                      </div>
+                   <div id="no-serial">
                      <div class="au-form-group">
                         <label class="au-control-input">
-                        <input class="au-control-input__input" type="checkbox" name="checkbox-ex" id="no-serial">
+                        <input class="au-control-input__input" type="checkbox" name="checkbox-ex" id="no-serial-1">
                         <span class="au-control-input__text">No serial number available</span>
                         </label>
                      </div>
+                   </div>
                      <div id="no-serial-callout" style="display:none;">
                         <div class="au-form-group">
                            <p class="au-callout">
@@ -636,14 +645,14 @@
                            <label class="au-control-input__text" for="commercial-radio-block">For business or commercial use</label>
                         </div>
                      </div>
-                     <div id="commercial" style="display: none;">
+                     <!--<div id="commercial" style="display: none;">
                         <div class="au-form-group">
                            <div class="au-callout">
                               <p>Drones (<abbr title="Remotely piloted aircraft">RPA</abbr>) registered for business or commercial use must be <a href="#">registered by the owner</a>. If the drone is owned by an organisation, the registration must be in the name of that organisation using their ARN.
                               </p>
                            </div>
                         </div>
-                     </div>
+                     </div>-->
                      <div class="au-form-group">
                         <label class="au-label">Is this drone currently registered in another country?</label>
                      </div>
@@ -653,7 +662,7 @@
                            <label class="au-control-input__text" for="yes-foreign-radio-block">Yes</label>
                         </div>
                         <div class="au-control-input au-control-input--block">
-                           <input class="au-control-input__input" type="radio" name="radio-ex1" id="no-foreign-radio-block">
+                           <input class="au-control-input__input" type="radio" name="radio-ex1" id="no-foreign-radio-block" checked>
                            <label class="au-control-input__text" for="no-foreign-radio-block">No</label>
                         </div>
                      </div>
